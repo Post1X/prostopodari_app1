@@ -34,8 +34,8 @@ export function ChooseImage(callBack) {
           launchImageLibrary(
             {
               mediaType: "photo",
-              includeBase64: false,
-              quality:1
+              includeBase64: true,
+              quality:1,
             },
             (response) => {
               if (!response.didCancel) {
@@ -53,7 +53,7 @@ export function ChooseImage(callBack) {
                 storageOptions: { privateDirectory: true },
                 cropping:true,
                 mediaType: "photo",
-                includeBase64: false,
+                includeBase64: true,
                 quality:1
 
               },

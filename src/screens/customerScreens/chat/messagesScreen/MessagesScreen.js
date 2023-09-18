@@ -33,7 +33,6 @@ export const MessagesScreen = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const store = useSelector((st) => st.customer);
   const [token, setToken] = useState("");
-  const [photo, setPhoto] = useState("");
   const user = route.params?.item;
   const state = route.params?.state;
   const url = BaseUrl + `chat/messages`;
@@ -42,16 +41,6 @@ export const MessagesScreen = ({ navigation, route }) => {
     setTokFunc();
   }, []);
 
-  useEffect(() => {
-    if (photo) {
-      photoAdd();
-    }
-  }, [photo]);
-
-  const photoAdd = () => {
-    socketNew.emit("send-img",photo);
-    setPhoto('')
-  };
   const setTokFunc = async () => {
     setVisible(true);
     let token = await checkTokens();
@@ -70,7 +59,6 @@ export const MessagesScreen = ({ navigation, route }) => {
     });
     socketNew.on("connect", () => {
       socketNew.emit("getMessage");
-      socketNew.emit("isRead");
     });
     getMessageFunc();
   };
@@ -81,16 +69,9 @@ export const MessagesScreen = ({ navigation, route }) => {
       setChat([...arr]);
       setVisible(false);
       setScrollToEnd(true);
-      isReadFunc(arr);
     });
   };
 
-  const isReadFunc = (arr) => {
-    const item = arr[arr.length - 1];
-    if (item.role !== "seller" && !item.isRead) {
-      socketNew.emit("isRead", item._id);
-    }
-  };
   const handleEve = (mess) => {
     if (addInput) {
       socketNew.emit("sendMessage", { text: mess });
@@ -101,7 +82,7 @@ export const MessagesScreen = ({ navigation, route }) => {
     try {
       ChooseImage(async (imageRes) => {
         if (!imageRes.didCancel) {
-          setPhoto(imageRes.assets[0]);
+          socketNew.emit("send-img",`data:image/png;base64,${imageRes.assets[0].base64}`)
         }
       });
     } catch (err) {
