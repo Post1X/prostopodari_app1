@@ -162,7 +162,7 @@ export const ApplicationsDataScreen = ({ navigation, route }) => {
       <View style={styles.applicationsContainer}>
         <View style={styles.changeContent}>
           <View style={[globalStyles.row]}>
-            <Image source={postCardImg} style={styles.imgForm} />
+            <Image source={{uri:BaseUrl + '/' + route.params?.banner}} style={styles.imgForm} />
             <View style={styles.textCont}>
               <Text
                 style={[globalStyles.titleText, globalStyles.weightLight, globalStyles.titleTextSmall, globalStyles.textAlignLeft]}>Текст

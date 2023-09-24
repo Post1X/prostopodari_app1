@@ -3,10 +3,10 @@ import { styles } from "./styles";
 import { Text, TouchableOpacity,View } from "react-native";
 import { ApplicationsDataName, globalStyles } from "../../../constants";
 
-export const ApplicationsForm = ({ item,navigation,orders }, index) => {
+export const ApplicationsForm = ({ item,navigation,orders,banner }, index) => {
 
   return (
-    <TouchableOpacity style={styles.applicationsContainer} onPress={()=>navigation.navigate(ApplicationsDataName,{item,orders})}>
+    <TouchableOpacity style={styles.applicationsContainer} onPress={()=>navigation.navigate(ApplicationsDataName,{item,orders,banner})}>
       <View style={[globalStyles.row,styles.rowCont]}>
         <Text style={[globalStyles.titleText,globalStyles.titleTextSmall4,globalStyles.textAlignLeft,globalStyles.weightLight,styles.name]}>№ {item._id.substring(15)}</Text>
         <Text style={[globalStyles.titleText,globalStyles.titleTextSmall4,globalStyles.textAlignLeft,globalStyles.weightLight,item.paid ? {color:'green'} : {color:'#E79800'}]}>{item.paid ? 'Заказ выполнен' : 'Ожидается выплата'}</Text>

@@ -9,6 +9,7 @@ import axiosInstance from "../../../../networking/axiosInstance";
 export const AplicationsScreen = ({ navigation }) => {
   const [orders, setOrders] = useState([]);
   const [ordersData, setOrdersData] = useState([]);
+  const [banner,setBanner] = useState('')
   const [sort, setSort] = useState([
     {
       id: 1,
@@ -83,9 +84,20 @@ export const AplicationsScreen = ({ navigation }) => {
   useEffect(() => {
     const unsubscribe = navigation.addListener("focus", () => {
       axiosFunc();
+      getBanner()
+
     });
     return unsubscribe;
   }, [navigation]);
+
+  const getBanner = async () =>{
+    try {
+      const response = await axiosInstance.get('/goods/banner')
+      setBanner(response.data.banner)
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   let checkFilterSort = (index) => {
     let arr = [];
@@ -139,6 +151,7 @@ export const AplicationsScreen = ({ navigation }) => {
                 key={index}
                 navigation={navigation}
                 orders={orders}
+                banner={banner}
               />
             );
           }}
