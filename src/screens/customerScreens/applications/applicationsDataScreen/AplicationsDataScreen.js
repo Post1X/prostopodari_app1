@@ -31,22 +31,22 @@ export const ApplicationsDataScreen = ({ navigation, route }) => {
         if (arr[i].name === "approved") {
           arr[i].title = "Заказ принят";
         }
-        if (arr[i].name === "assembling") {
+       else if (arr[i].name === "assembling") {
           arr[i].title = "Заказ в сборке";
         }
-        if (arr[i].name === "accepted") {
+        else if (arr[i].name === "accepted") {
           arr[i].title = "Ожидает подтверждения";
         }
-        if (arr[i].name === "pending") {
+        else if (arr[i].name === "pending") {
           arr[i].title = "Ожидает подтвержден";
         }
-        if (arr[i].name === "in_transit") {
+        else if (arr[i].name === "in_transit") {
           arr[i].title = "Заказ в пути";
         }
-        if (arr[i].name === "completed") {
+        else if (arr[i].name === "completed") {
           arr[i].title = "Заказ завершен";
         }
-        if (arr[i].name === "cancelled") {
+        else if (arr[i].name === "cancelled") {
           arr[i].title = "Заказ cancelled";
         }
       }

@@ -2,13 +2,9 @@ import React, { useState, useRef, useEffect } from "react";
 import { styles } from "./styles";
 import { View, Text, ScrollView, TouchableOpacity, TextInput, Image } from "react-native";
 import {
-  approvedData,
-  DeleteShopData,
   Loading,
-  WaitingForm,
   BackButton,
   AppInput,
-  globalHeight,
   globalWidth, ChooseImage,
 } from "../../../../components";
 import { ProfileScreenName, SET_CUSTOMER, WaitingName, globalStyles, BaseUrl } from "../../../../constants";

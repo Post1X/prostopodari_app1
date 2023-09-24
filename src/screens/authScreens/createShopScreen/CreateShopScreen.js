@@ -95,6 +95,8 @@ export const CreateShopScreen = ({ navigation, route }) => {
         const formData = new FormData();
         formData.append("city", selectedCountry?.name);
         formData.append("address", selectedCountry?.address);
+        formData.append("lon", selectedCountry?.lon);
+        formData.append("lat", selectedCountry?.lat);
         formData.append("distPrice", `${taxi[0]}${taxi[1]}`);
         formData.append("title", name);
         formData.append("about_store", proShop);
@@ -144,6 +146,8 @@ export const CreateShopScreen = ({ navigation, route }) => {
         formData.append("distPrice", `${taxi[0]}${taxi[1]}`);
         formData.append("address", selectedCountry?.address);
         formData.append("city", selectedCountry?.name);
+        formData.append("lon", selectedCountry?.lon);
+        formData.append("lat", selectedCountry?.lat);
         formData.append("title", name);
         formData.append("about_store", proShop);
         formData.append("weekdays", JSON.stringify({
@@ -199,7 +203,9 @@ export const CreateShopScreen = ({ navigation, route }) => {
       setTaxi(routeShop.distance.$numberDecimal)
       setSelectedCountry({
         name:routeShop.city,
-        address:routeShop.address
+        address:routeShop.address,
+        lon:routeShop.lon,
+        lat:routeShop.lat
       })
       storeFunc();
     }
