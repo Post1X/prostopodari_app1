@@ -49,7 +49,7 @@ export const ProfileScreen = ({ navigation }) => {
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   const allShopFunc = async () => {
     try {
@@ -76,7 +76,7 @@ export const ProfileScreen = ({ navigation }) => {
                 <View style={globalStyles.row}>
                   <Image source={place} style={styles.placeIcon} />
                   <Text
-                    style={[globalStyles.titleText, globalStyles.weightLight, styles.placeText]}>{shop?.city}</Text>
+                    style={[globalStyles.titleText, globalStyles.weightLight, styles.placeText]}>{shop?.city} / {shop?.address}</Text>
                 </View>
               </View>
             </View>

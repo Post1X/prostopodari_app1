@@ -13,15 +13,13 @@ export function SwitchTogglesCustom({ trueFalse, text, title, topViewStyle, img,
       try {
         proFunc(-1);
         const response = await axiosInstance.put(`/goods/unpromote?good_id=${item._id}`);
-        console.log(response)
       } catch (e) {
         console.log(e);
       }
     } else {
       try {
         proFunc(1);
-        const response = await axiosInstance.put(`/goods/unpromote?good_id=${item._id}`);
-        console.log(response)
+        const response = await axiosInstance.put(`/goods/promote?good_id=${item._id}`);
       } catch (e) {
         console.log(e);
       }

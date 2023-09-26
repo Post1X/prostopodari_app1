@@ -88,7 +88,7 @@ export function ChangeShopModal(props) {
                       <View style={globalStyles.row}>
                         <Image source={place} style={styles.placeIcon} />
                         <Text
-                          style={[globalStyles.titleText, globalStyles.weightLight, styles.placeText]}>{item?.city_id?.city_name}</Text>
+                          style={[globalStyles.titleText, globalStyles.weightLight, styles.placeText]}>{item?.city} / {item.address}</Text>
                       </View>
                     </View>
                   </View>

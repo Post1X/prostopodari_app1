@@ -126,15 +126,15 @@ export const EditGoodsScreen = ({ navigation, route }) => {
     } else if (!Object.keys(images).length && !Object.keys(newImagesArray).length) {
       setPhotoColor(Colors.red);
     } else if (!shopName) {
-      setError("Название магазина net");
+      setError("Укажите Название магазина");
     } else if (!count) {
-      setError("Количество на складе net");
+      setError("Укажите Количество на складе");
     } else if (!shortDescription) {
-      setError("Описание товара net");
+      setError("Укажите Описание товара");
     } else if (!category) {
-      setError("category net");
+      setError("но при редактировании надо чтобы категория не слетала");
     } else if (!price) {
-      setError("price net");
+      setError("Укажите Цена");
     }
   };
   const axiosFunc = async () => {

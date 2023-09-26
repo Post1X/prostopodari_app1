@@ -122,13 +122,17 @@ export const SignupScreen = ({ navigation, route }) => {
           type: SET_CUSTOMER,
           payload: response.data.user_data,
         });
+
         await setTokens(response.data.token);
+        console.log(response,'post')
       } else {
         const response = await axiosInstance.put("/users/sellers/try", data);
         dispatch({
           type: SET_CUSTOMER,
           payload: response.data.user_data,
         });
+        console.log(response,'put')
+
       }
 
       navigation.replace(nav, { data: pendingData });

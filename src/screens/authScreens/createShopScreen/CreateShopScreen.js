@@ -196,6 +196,7 @@ export const CreateShopScreen = ({ navigation, route }) => {
   };
 
   useEffect(() => {
+    console.log(routeShop)
     if (routeShop) {
       setPhoto(BaseUrl + "/" + routeShop.logo_url);
       setName(routeShop.title);
@@ -207,14 +208,8 @@ export const CreateShopScreen = ({ navigation, route }) => {
         lon:routeShop.lon,
         lat:routeShop.lat
       })
-      storeFunc();
     }
   }, []);
-
-  const storeFunc = async () => {
-    const st = await checkStore();
-    setSelectedCountry(st);
-  };
 
   const onChangeTextFunc = (e, set) => {
     set(e);
@@ -230,10 +225,10 @@ export const CreateShopScreen = ({ navigation, route }) => {
     } catch (err) {
     }
   };
-  const searchDataYandex = () => {
+  const searchDataYandex = (st) => {
     axios.get(`https://geocode-maps.yandex.ru/1.x?apikey=da4e12cb-3403-409e-948c-c34e4dfaafaa&geocode=${countryText}&format=json`).then((res) => {
       setCountry(res.data.response.GeoObjectCollection.featureMember[0]);
-      countryChangeFunc(res.data.response.GeoObjectCollection.featureMember[0]);
+      countryChangeFunc(res.data.response.GeoObjectCollection.featureMember[0],st);
     })
       .catch((e) => {
         setCountry([]);
@@ -261,16 +256,25 @@ export const CreateShopScreen = ({ navigation, route }) => {
     }
   };
 
-  const countryChangeFunc = (it) => {
+  const countryChangeFunc = (it,state) => {
     var str = it.GeoObject.Point.pos;
     var stringArray = str.split(/(\s+)/);
     setLocation({
       lat: +stringArray[2],
       lon: +stringArray[0],
       zoom: 8,
-      name: it.GeoObject.metaDataProperty.GeocoderMetaData.Address.Components[2].name,
+      name:  it.GeoObject.metaDataProperty.GeocoderMetaData.Address?.Components[2].name,
       address:it.GeoObject.metaDataProperty.GeocoderMetaData.Address.Components[3].name + ' ' + it.GeoObject.metaDataProperty.GeocoderMetaData.Address.Components[4].name
     });
+    setSelectedCountry({
+      lat: +stringArray[2],
+      lon: +stringArray[0],
+      zoom: 8,
+      name: it.GeoObject.metaDataProperty.GeocoderMetaData.Address.Components[2].name,
+      address:it.GeoObject.metaDataProperty.GeocoderMetaData.Address.Components[3].name + ' ' + it.GeoObject.metaDataProperty.GeocoderMetaData.Address.Components[4].name    });
+    if(!state){
+      modalFuncMap(false);
+    }
   };
 
   const okayCountryFunc = () => {
@@ -468,19 +472,22 @@ export const CreateShopScreen = ({ navigation, route }) => {
         onConfirm={(date) => {
           const hours = date.getHours();
           const minutes = date.getMinutes();
-          setOpen(false);
+          const m = '' + minutes
+          const min = m.length === 1  ? `0${minutes}`: minutes
+
+            setOpen(false);
           setError("");
           if (dateNum === 1) {
-            setDateTime(`${hours}:${minutes}`);
+            setDateTime(`${hours}:${min}`);
             setDate(date);
           } else if (dateNum === 2) {
-            setDateTime1(`${hours}:${minutes}`);
+            setDateTime1(`${hours}:${min}`);
             setDate1(date);
           } else if (dateNum === 3) {
-            setDateTime2(`${hours}:${minutes}`);
+            setDateTime2(`${hours}:${min}`);
             setDate1(date);
           } else if (dateNum === 4) {
-            setDateTime3(`${hours}:${minutes}`);
+            setDateTime3(`${hours}:${min}`);
             setDate1(date);
           }
           setDate(date);

@@ -20,17 +20,16 @@ export const styles = StyleSheet.create({
       height: 5,
     },
   },
-
-
-
   back_button_View: {
-    position:'absolute',
+    // position:'absolute',
     zIndex:999999,
     right:globalWidth(0),
-    top:globalHeight(15),
+    top:globalHeight(5),
     alignItems: "flex-end",
+    width:width,
+    height:globalHeight(25),
     marginRight: globalWidth(20),
-    marginVertical:globalHeight(10)
+    marginVertical:globalHeight(10),
   },
   back_button: {
     width: globalHeight(20),
@@ -42,16 +41,15 @@ export const styles = StyleSheet.create({
     backgroundColor:'white',
     paddingLeft:globalWidth(10),
     width:width-globalWidth(80),
-    marginBottom:globalHeight(10)
+    marginTop:globalHeight(20)
   },
   btn:{
-    marginBottom:globalHeight(10),
+    marginVertical:globalHeight(30),
     width:width-globalWidth(75),
-
   },
 
   header:{
-    marginTop:Platform.OS === 'ios' ?  30 : 0
+    marginTop:Platform.OS === 'ios' ? globalHeight(10) : 0
   },
   container: {
     ...StyleSheet.absoluteFillObject,
@@ -71,8 +69,10 @@ export const styles = StyleSheet.create({
     // position:'absolute',
     width:width,
     alignItems:'center',
-  backgroundColor:'white',
+    backgroundColor:'white',
     paddingVertical:globalHeight(10),
+    borderTopEndRadius:10,
+    borderTopLeftRadius:10
   },
   btnFooter:{
     width:width-globalWidth(20),
@@ -94,5 +94,30 @@ export const styles = StyleSheet.create({
   contentMyDetailsText: {
     color: Colors.black,
     marginBottom: globalHeight(8),
+  },
+  searchCont: {
+    backgroundColor: Colors.tifany,
+    paddingVertical: globalHeight(5),
+    paddingHorizontal: globalWidth(5),
+    borderRadius: 6,
+    position: 'absolute',
+    right: globalWidth(18),
+    bottom:globalHeight(4),
+    zIndex:10,
+  },
+  searchIcon: {
+    width: globalWidth(22),
+    height: globalWidth(22),
+    resizeMode: 'contain',
+  },
+  placeIcon: {
+    width: globalWidth(18),
+    height: globalHeight(21),
+    resizeMode: "contain",
+    position: 'absolute',
+    zIndex:10,
+    left: globalWidth(0),
+    bottom:globalHeight(15),
+
   },
 });

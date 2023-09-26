@@ -102,7 +102,7 @@ export const AddScreen = ({ navigation, route }) => {
     } else if (!count) {
       setError("Укажите Количество на складе");
     } else if (!category) {
-      setError("Укажите категория");
+      setError("но при редактировании надо чтобы категория не слетала");
     } else if (!price) {
       setError("Укажите Цена");
     } else if (time == "Время готовности") {

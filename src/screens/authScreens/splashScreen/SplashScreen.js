@@ -30,7 +30,6 @@ export const SplashScreen = ({ navigation }) => {
   const axiosFunc = async () => {
     try {
       const response = await axiosInstance.get("/users/profile/seller");
-      console.log(response)
       dispatch({
         type: SET_CUSTOMER,
         payload: response.data.user_data,
