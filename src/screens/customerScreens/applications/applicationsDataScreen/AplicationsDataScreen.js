@@ -130,7 +130,7 @@ export const ApplicationsDataScreen = ({ navigation, route }) => {
             <View style={styles.countryView}>
               <Text
                 style={[globalStyles.titleText, globalStyles.weightLight, globalStyles.titleTextSmall, globalStyles.textAlignLeft]}>Город</Text>
-              {/*<Text>{item.}</Text>*/}
+              {/*<Text>{item.}</Text>*/} 
             </View>
             <View style={styles.countryView}>
               <Text
@@ -139,7 +139,7 @@ export const ApplicationsDataScreen = ({ navigation, route }) => {
             </View>
             <View style={styles.countryView}>
               <Text style={[globalStyles.titleText, globalStyles.weightLight, globalStyles.titleTextSmall, globalStyles.textAlignLeft]}>Имя получателя</Text>
-              <Text>{item.user_id.full_name}</Text>
+              <Text>{item.name}</Text>
             </View>
             <View style={styles.countryView}>
               <Text
